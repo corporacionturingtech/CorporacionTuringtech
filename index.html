@@ -315,8 +315,8 @@
             {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "Casos de Éxito",
-                "item": "https://grupoturing.com/#casos"
+                "name": "Catálogo Digital",
+                "item": "https://grupoturing.com/catalogo.html"
             },
             {
                 "@type": "ListItem",
@@ -554,6 +554,55 @@
             height: 50px;
             color: white;
         }
+        
+        /* FAQ Accordion Styles */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: #f97316;
+        }
+        
+        .faq-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+            color: #f97316;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            opacity: 0;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-800 antialiased">
@@ -609,7 +658,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#servicios" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Servicios</a>
                     <a href="#proceso" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Proceso</a>
-                    <a href="#casos" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Casos de Uso</a>
+                    <a href="catalogo.html" target="_blank" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Catálogo</a>
                     <a href="#nosotros" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Nosotros</a>
                 </div>
                 <button onclick="scrollToContact()" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
@@ -1010,153 +1059,105 @@
         </div>
     </section>
 
-    <!-- Casos de Uso -->
-    <section id="casos" class="py-20 bg-gradient-to-br from-slate-50 to-orange-50">
+    <!-- Catálogo Digital -->
+    <section class="py-20 bg-gradient-to-br from-slate-800 to-slate-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl sm:text-5xl font-bold text-slate-800 mb-4">
-                    Casos de Éxito
-                </h2>
-                <p class="text-xl text-slate-600">
-                    Transformaciones reales que generaron resultados medibles
-                </p>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                
-                <!-- Caso 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 card-hover">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Caso de éxito automatización RPA en cadena retail ahorrando 15 horas diarias" class="w-full h-48 object-cover" loading="lazy" width="600" height="192">
-                    <div class="p-6">
-                        <div class="text-orange-500 font-semibold text-sm mb-2">RETAIL • AUTOMATIZACIÓN RPA</div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-3">Cadena de Retail Reduceredujo 15 Horas Diarias</h3>
-                        <p class="text-slate-600 mb-4">
-                            Automatizamos el procesamiento de pedidos, conciliación de inventario y generación de reportes de ventas para una cadena de 50+ tiendas.
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Imagen / Visual -->
+                    <div class="order-2 lg:order-1">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl blur-2xl opacity-20"></div>
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80" 
+                                 alt="Catálogo digital servicios tecnológicos Grupo Turing Ecuador automatización RPA" 
+                                 class="relative rounded-2xl shadow-2xl border-4 border-orange-500/20" 
+                                 loading="lazy" 
+                                 width="800" 
+                                 height="600">
+                            <div class="absolute -bottom-6 -right-6 bg-orange-500 text-white px-6 py-4 rounded-xl shadow-xl">
+                                <div class="text-3xl font-bold">8</div>
+                                <div class="text-sm">Páginas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contenido -->
+                    <div class="order-1 lg:order-2 text-white">
+                        <div class="inline-block bg-orange-500/20 text-orange-400 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-orange-500/30">
+                            📖 Nuevo
+                        </div>
+                        <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                            Descarga Nuestro <span class="text-orange-500">Catálogo Digital</span>
+                        </h2>
+                        <p class="text-xl text-slate-300 mb-8 leading-relaxed">
+                            Explora nuestra oferta completa de servicios en formato interactivo. Conoce en detalle cómo la automatización, desarrollo de software e ingeniería de datos pueden transformar tu empresa.
                         </p>
-                        <div class="border-t border-slate-200 pt-4 space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Ahorro de tiempo:</span>
-                                <span class="font-bold text-orange-500">75%</span>
+                        
+                        <!-- Lista de beneficios -->
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Información Detallada</h3>
+                                    <p class="text-slate-400">Servicios completos con casos de uso y metodología</p>
+                                </div>
                             </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">ROI en:</span>
-                                <span class="font-bold text-orange-500">4 meses</span>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Formato Interactivo</h3>
+                                    <p class="text-slate-400">Navega fácilmente entre páginas como un libro digital</p>
+                                </div>
                             </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Errores reducidos:</span>
-                                <span class="font-bold text-orange-500">95%</span>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Compártelo Fácilmente</h3>
+                                    <p class="text-slate-400">Envía el enlace por WhatsApp, email o redes sociales</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Caso 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 card-hover">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Caso de éxito ingeniería de datos en fintech procesando 10 millones de transacciones automáticamente" class="w-full h-48 object-cover" loading="lazy" width="600" height="192">
-                    <div class="p-6">
-                        <div class="text-orange-500 font-semibold text-sm mb-2">FINANZAS • DATA ENGINEERING</div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-3">Fintech Procesó 10M de Transacciones Automáticamente</h3>
-                        <p class="text-slate-600 mb-4">
-                            Implementamos un data warehouse centralizado con pipelines ETL que procesa millones de transacciones diarias con análisis en tiempo real.
+                        <!-- Botones -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="catalogo.html" 
+                               target="_blank"
+                               class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center inline-flex items-center justify-center gap-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                                Ver Catálogo Digital
+                            </a>
+                            <a href="https://wa.me/593990686162?text=Hola,%20me%20gustaría%20recibir%20el%20catálogo%20digital%20de%20Grupo%20Turing" 
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="border-2 border-orange-500 hover:bg-orange-500 text-orange-400 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 text-center inline-flex items-center justify-center gap-2">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                                Compartir por WhatsApp
+                            </a>
+                        </div>
+
+                        <p class="text-sm text-slate-400 mt-6">
+                            ✓ Acceso inmediato &nbsp;&nbsp;|&nbsp;&nbsp; ✓ Sin registro &nbsp;&nbsp;|&nbsp;&nbsp; ✓ 100% Gratis
                         </p>
-                        <div class="border-t border-slate-200 pt-4 space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Velocidad de procesamiento:</span>
-                                <span class="font-bold text-orange-500">+400%</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Costos operativos:</span>
-                                <span class="font-bold text-orange-500">-45%</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Insights en tiempo real:</span>
-                                <span class="font-bold text-orange-500">Sí</span>
-                            </div>
-                        </div>
                     </div>
+
                 </div>
-
-                <!-- Caso 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 card-hover">
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80" alt="Caso de éxito integración de sistemas en manufactura conectando 8 sistemas en uno solo" class="w-full h-48 object-cover" loading="lazy" width="600" height="192">
-                    <div class="p-6">
-                        <div class="text-orange-500 font-semibold text-sm mb-2">MANUFACTURA • INTEGRACIÓN</div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-3">Manufacturer Integró 8 Sistemas en Uno Solo</h3>
-                        <p class="text-slate-600 mb-4">
-                            Conectamos ERP, MES, CRM, WMS y otros sistemas para crear un flujo de información unificado desde producción hasta entrega.
-                        </p>
-                        <div class="border-t border-slate-200 pt-4 space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Sincronización de datos:</span>
-                                <span class="font-bold text-orange-500">Tiempo real</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Duplicación eliminada:</span>
-                                <span class="font-bold text-orange-500">100%</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-slate-600">Productividad:</span>
-                                <span class="font-bold text-orange-500">+60%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonios -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl sm:text-5xl font-bold text-slate-800 mb-4">
-                    Lo Que Dicen Nuestros Clientes
-                </h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                
-                <!-- Testimonio 1 -->
-                <div class="bg-gray-50 rounded-2xl p-8 border border-slate-200">
-                    <div class="flex gap-1 mb-4">
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    </div>
-                    <p class="text-slate-700 mb-6 italic leading-relaxed">
-                        "Grupo Turing transformó completamente nuestras operaciones. Lo que antes nos tomaba semanas, ahora se hace en horas. El equipo es profesional, comprometido y realmente entiende las necesidades del negocio."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-700 font-bold">MC</div>
-                        <div>
-                            <div class="font-bold text-slate-800">María Contreras</div>
-                            <div class="text-sm text-slate-600">COO, RetailCorp</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonio 2 -->
-                <div class="bg-gray-50 rounded-2xl p-8 border border-slate-200">
-                    <div class="flex gap-1 mb-4">
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    </div>
-                    <p class="text-slate-700 mb-6 italic leading-relaxed">
-                        "La inversión en automatización con Grupo Turing se pagó sola en menos de 6 meses. Ahora tenemos visibilidad completa de nuestras operaciones y tomamos decisiones basadas en datos reales."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-700 font-bold">JR</div>
-                        <div>
-                            <div class="font-bold text-slate-800">Jorge Ramírez</div>
-                            <div class="text-sm text-slate-600">CTO, FinTech Solutions</div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -1261,66 +1262,108 @@
                     Resolvemos tus dudas sobre automatización empresarial, RPA y transformación digital en Ecuador
                 </p>
             </div>
-            <div class="max-w-4xl mx-auto space-y-4">
+            <div class="max-w-4xl mx-auto space-y-4" id="faqAccordion">
                 
                 <!-- FAQ 1 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">
-                        ¿Qué es la automatización de procesos empresariales en Ecuador?
-                    </h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        La automatización de procesos empresariales es la tecnología que permite eliminar tareas manuales y repetitivas mediante software especializado. En Grupo Turing automatizamos procesos como entrada de datos, generación de reportes, conciliaciones bancarias y más, ahorrando hasta 80% del tiempo operativo de las empresas en Ecuador.
-                    </p>
+                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3 class="text-xl font-bold text-slate-800">
+                            ¿Qué es la automatización de procesos empresariales en Ecuador?
+                        </h3>
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-600 leading-relaxed">
+                            La automatización de procesos empresariales es la tecnología que permite eliminar tareas manuales y repetitivas mediante software especializado. En Grupo Turing automatizamos procesos como entrada de datos, generación de reportes, conciliaciones bancarias y más, ahorrando hasta 80% del tiempo operativo de las empresas en Ecuador.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ 2 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">
-                        ¿Cuánto cuesta automatizar procesos empresariales en Ecuador?
-                    </h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        El costo de automatización varía según la complejidad del proceso. En Grupo Turing ofrecemos consultoría gratuita para evaluar tus procesos. La mayoría de nuestros clientes recuperan su inversión en menos de 6 meses gracias al ahorro de tiempo y reducción de errores.
-                    </p>
+                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3 class="text-xl font-bold text-slate-800">
+                            ¿Cuánto cuesta automatizar procesos empresariales en Ecuador?
+                        </h3>
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-600 leading-relaxed">
+                            El costo de automatización varía según la complejidad del proceso. En Grupo Turing ofrecemos consultoría gratuita para evaluar tus procesos. La mayoría de nuestros clientes recuperan su inversión en menos de 6 meses gracias al ahorro de tiempo y reducción de errores.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ 3 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">
-                        ¿Qué es RPA y cómo funciona?
-                    </h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        RPA (Robotic Process Automation) son robots de software que replican acciones humanas en sistemas digitales. Pueden trabajar 24/7 sin errores, procesando datos, completando formularios, enviando emails y más. Grupo Turing implementa RPA personalizado para empresas ecuatorianas en Quito, Guayaquil, Cuenca y todo el país.
-                    </p>
+                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3 class="text-xl font-bold text-slate-800">
+                            ¿Qué es RPA y cómo funciona?
+                        </h3>
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-600 leading-relaxed">
+                            RPA (Robotic Process Automation) son robots de software que replican acciones humanas en sistemas digitales. Pueden trabajar 24/7 sin errores, procesando datos, completando formularios, enviando emails y más. Grupo Turing implementa RPA personalizado para empresas ecuatorianas en Quito, Guayaquil, Cuenca y todo el país.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ 4 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">
-                        ¿En qué ciudades de Ecuador operan?
-                    </h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Grupo Turing opera en todo Ecuador, con servicios en Quito, Guayaquil, Cuenca y todas las ciudades del país. Ofrecemos consultoría presencial en Quito y consultoría remota para el resto del país en automatización de procesos, RPA, ingeniería de datos y transformación digital.
-                    </p>
+                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3 class="text-xl font-bold text-slate-800">
+                            ¿En qué ciudades de Ecuador operan?
+                        </h3>
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-600 leading-relaxed">
+                            Grupo Turing opera en todo Ecuador, con servicios en Quito, Guayaquil, Cuenca y todas las ciudades del país. Ofrecemos consultoría presencial en Quito y consultoría remota para el resto del país en automatización de procesos, RPA, ingeniería de datos y transformación digital.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ 5 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">
-                        ¿Cuánto tiempo toma implementar automatización de procesos?
-                    </h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        La implementación varía de 2 semanas a 3 meses según la complejidad. Procesos simples de RPA pueden estar operativos en 2-4 semanas. Soluciones complejas de integración de sistemas pueden tomar 2-3 meses. En Grupo Turing usamos metodologías ágiles para resultados rápidos.
-                    </p>
+                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3 class="text-xl font-bold text-slate-800">
+                            ¿Cuánto tiempo toma implementar automatización de procesos?
+                        </h3>
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-600 leading-relaxed">
+                            La implementación varía de 2 semanas a 3 meses según la complejidad. Procesos simples de RPA pueden estar operativos en 2-4 semanas. Soluciones complejas de integración de sistemas pueden tomar 2-3 meses. En Grupo Turing usamos metodologías ágiles para resultados rápidos.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ 6 -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">
-                        ¿Qué empresas pueden beneficiarse de la automatización?
-                    </h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Cualquier empresa con tareas repetitivas puede beneficiarse: retail, finanzas, manufactura, logística, servicios, salud, etc. Si tu equipo dedica tiempo a entrada de datos, generación de reportes, conciliaciones o procesos manuales, la automatización puede ayudarte. Grupo Turing tiene experiencia en múltiples industrias en Ecuador.
-                    </p>
+                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <h3 class="text-xl font-bold text-slate-800">
+                            ¿Qué empresas pueden beneficiarse de la automatización?
+                        </h3>
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-600 leading-relaxed">
+                            Cualquier empresa con tareas repetitivas puede beneficiarse: retail, finanzas, manufactura, logística, servicios, salud, etc. Si tu equipo dedica tiempo a entrada de datos, generación de reportes, conciliaciones o procesos manuales, la automatización puede ayudarte. Grupo Turing tiene experiencia en múltiples industrias en Ecuador.
+                        </p>
+                    </div>
                 </div>
 
             </div>
@@ -1682,6 +1725,31 @@
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
+        
+        // FAQ Accordion functionality
+        function toggleFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const allFaqItems = document.querySelectorAll('.faq-item');
+            const isCurrentlyActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            allFaqItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // If the clicked item wasn't active, open it
+            if (!isCurrentlyActive) {
+                faqItem.classList.add('active');
+            }
+        }
+        
+        // Optional: Open first FAQ by default
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const firstFaq = document.querySelector('.faq-item');
+        //     if (firstFaq) {
+        //         firstFaq.classList.add('active');
+        //     }
+        // });
     </script>
 
 </body>
