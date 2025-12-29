@@ -50,10 +50,18 @@
         <priority>0.7</priority>
     </url>
 
+    <!-- Preguntas Frecuentes -->
+    <url>
+        <loc>https://grupoturing.com/#faq</loc>
+        <lastmod>2024-12-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Formulario de Contacto -->
     <url>
         <loc>https://grupoturing.com/#contacto</loc>
-        <lastmod>2024-12-14</lastmod>
+        <lastmod>2024-12-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
