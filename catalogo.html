@@ -93,7 +93,9 @@
 
         /* Portada - siempre sola */
         .portada {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            background: 
+                linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.95) 100%),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(148,163,184,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
             color: white;
             display: flex;
             flex-direction: column;
@@ -113,8 +115,15 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 15% 30%, rgba(249, 115, 22, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
 
         .portada-content {
@@ -123,25 +132,64 @@
         }
 
         .logo-container {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 45px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 30px 35px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(249, 115, 22, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
             display: inline-block;
+            position: relative;
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .logo-container img {
-            max-width: 220px;
+            max-width: 240px;
             height: auto;
-            border-radius: 10px;
+            border-radius: 12px;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        }
+        
+        .trust-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.9);
         }
 
         .portada h1 {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 900;
-            margin-bottom: 25px;
-            line-height: 1.2;
+            margin-bottom: 20px;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            filter: drop-shadow(0 2px 20px rgba(0, 0, 0, 0.3));
+        }
+        
+        .portada h1 .highlight {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
 
         .portada p {
@@ -187,13 +235,75 @@
         }
 
         .portada-footer {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 18px 40px;
-            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            padding: 25px 40px;
+            border-radius: 20px;
             font-size: 15px;
-            margin-top: 45px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 40px;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 35px;
+            max-width: 750px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2);
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #f97316;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 30px;
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .cta-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(249, 115, 22, 0.6);
         }
 
         /* Contraportada */
@@ -599,15 +709,45 @@
             }
 
             .portada h1 {
-                font-size: 30px;
+                font-size: 32px;
             }
 
             .portada p {
                 font-size: 16px;
+                padding: 25px 30px;
             }
 
             .page-title {
                 font-size: 26px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 25px;
+            }
+            
+            .stat-item {
+                padding: 18px;
+            }
+            
+            .stat-number {
+                font-size: 28px;
+            }
+            
+            .cta-badge {
+                padding: 14px 24px;
+                font-size: 14px;
+                margin-top: 20px;
+            }
+            
+            .trust-badge {
+                font-size: 10px;
+                padding: 6px 12px;
+            }
+            
+            .logo-container img {
+                max-width: 180px;
             }
 
             .contraportada h2 {
@@ -672,7 +812,37 @@
             }
 
             .portada h1 {
-                font-size: 26px;
+                font-size: 28px;
+            }
+            
+            .portada p {
+                font-size: 15px;
+                padding: 20px 25px;
+            }
+            
+            .stats-grid {
+                gap: 12px;
+            }
+            
+            .stat-number {
+                font-size: 24px;
+            }
+            
+            .stat-label {
+                font-size: 12px;
+            }
+            
+            .logo-container {
+                padding: 25px 30px;
+            }
+            
+            .logo-container img {
+                max-width: 160px;
+            }
+            
+            .portada-footer {
+                padding: 20px 25px;
+                font-size: 13px;
             }
 
             .service-box,
@@ -738,12 +908,44 @@
         <div class="page portada single-page" data-page="1">
             <div class="portada-content">
                 <div class="logo-container">
+                    <div class="trust-badge">✓ CERTIFICADOS</div>
                     <img src="LogoEmpresa.jpg" alt="Grupo Turing Logo">
                 </div>
-                <h1>Tecnología que Blinda y<br>Potencia su Empresa</h1>
-                <p>Automatización de Procesos, Ingeniería de Datos e Infraestructura de Alto Nivel - Especializados en el Sector Financiero Popular y Solidario</p>
+                
+                <h1>
+                    Tecnología que <span class="highlight">Blinda</span> y<br>
+                    <span class="highlight">Potencia</span> su Empresa
+                </h1>
+                
+                <p>
+                    Automatización de Procesos, Ingeniería de Datos e Infraestructura de Alto Nivel - Especializados en el Sector Financiero Popular y Solidario
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">+10</span>
+                        <span class="stat-label">Años de Experiencia</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Clientes Satisfechos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Tasa de Éxito</span>
+                    </div>
+                </div>
+                
+                <div class="cta-badge">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Soluciones con Normativas Regulatorias
+                </div>
+                
                 <div class="portada-footer">
-                    ✓ Soluciones diseñadas para cumplir con normativas regulatorias y exigencias del mercado actual
+                    <strong>Especialistas en Cooperativas de Ahorro y Crédito del Ecuador</strong><br>
+                    <span style="font-size: 13px; opacity: 0.9;">Trabajamos con instituciones financieras que confían en nuestra tecnología</span>
                 </div>
             </div>
         </div>
