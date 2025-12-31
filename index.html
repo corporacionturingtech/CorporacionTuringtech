@@ -107,8 +107,8 @@
                 "name": "Cuenca"
             },
             {
-                "@type": "Country",
-                "name": "Ecuador"
+            "@type": "Country",
+            "name": "Ecuador"
             }
         ],
         "hasOfferCatalog": {
@@ -603,6 +603,71 @@
             opacity: 1;
             margin-top: 1rem;
         }
+
+        /* Catálogo Banner Flotante */
+        .catalog-banner {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 99;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.4);
+            max-width: 320px;
+            animation: slideInRight 0.5s ease-out;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .catalog-banner:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(249, 115, 22, 0.6);
+        }
+
+        .catalog-banner-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .catalog-banner-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .catalog-banner {
+                bottom: 80px;
+                right: 15px;
+                left: 15px;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-slate-800 antialiased">
@@ -626,6 +691,24 @@
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
     </a>
+
+    <!-- Banner Flotante Catálogo -->
+    <div id="catalogBanner" class="catalog-banner" style="display: none;">
+        <button class="catalog-banner-close" onclick="closeCatalogBanner()" aria-label="Cerrar">×</button>
+        <div class="flex items-start gap-3">
+            <div class="text-3xl">📖</div>
+            <div>
+                <div class="font-bold text-lg mb-1">Catálogo Digital</div>
+                <div class="text-sm text-white/90 mb-3">8 páginas con info técnica detallada, metodología y casos de éxito</div>
+                <a href="catalogo.html" target="_blank" class="inline-flex items-center gap-2 bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold text-sm transition-all hover:bg-slate-50 hover:gap-3">
+                    Ver Ahora
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
     
     <!-- Hidden iframe for Google Forms submission -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleFormSubmitted()"></iframe>
@@ -657,8 +740,9 @@
             </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#servicios" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Servicios</a>
-                    <a href="#proceso" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Proceso</a>
-                    <a href="catalogo.html" target="_blank" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Catálogo</a>
+                    <a href="catalogo.html" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
+                        📖 Ver Catálogo Digital
+                    </a>
                     <a href="#nosotros" class="text-slate-600 hover:text-orange-500 font-medium transition-colors">Nosotros</a>
                 </div>
                 <button onclick="scrollToContact()" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
@@ -743,6 +827,84 @@
         </div>
     </section>
 
+    <!-- CTA Catálogo Digital Destacado -->
+    <section class="py-16 bg-gradient-to-br from-orange-500 to-orange-600 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg width=\"60\" height=\"60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"white\" stroke-width=\"1\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>');"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="text-white">
+                        <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                            📖 Nuevo
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                            Descubra Nuestro Catálogo Digital Interactivo
+                        </h2>
+                        <p class="text-lg mb-6 text-white/90 leading-relaxed">
+                            Explore en detalle todos nuestros servicios en formato de libro digital. Conozca casos de uso específicos, metodología de trabajo, tecnologías utilizadas y empresas que confían en nosotros.
+                        </p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-white/95">8 páginas con información técnica detallada</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-white/95">Navegación interactiva como un libro real</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-white/95">Acceso inmediato, sin registro ni descargas</span>
+                            </div>
+                        </div>
+                        <a href="catalogo.html" target="_blank" class="inline-flex items-center gap-3 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:scale-105 hover:bg-slate-50">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            Ver Catálogo Digital Completo
+                        </a>
+                    </div>
+                    <div class="hidden lg:block">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-white/20 rounded-2xl blur-3xl"></div>
+                            <div class="relative bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-8 shadow-2xl">
+                                <div class="text-center">
+                                    <div class="text-6xl mb-4">📖</div>
+                                    <div class="text-2xl font-bold text-white mb-2">8 Páginas</div>
+                                    <div class="text-white/80 mb-4">Contenido Profesional</div>
+                                    <div class="grid grid-cols-2 gap-3 text-sm">
+                                        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                                            <div class="font-bold text-white">RPA</div>
+                                            <div class="text-white/70 text-xs">Automatización</div>
+                                        </div>
+                                        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                                            <div class="font-bold text-white">Software</div>
+                                            <div class="text-white/70 text-xs">Desarrollo</div>
+                                        </div>
+                                        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                                            <div class="font-bold text-white">Datos</div>
+                                            <div class="text-white/70 text-xs">Ingeniería</div>
+                                        </div>
+                                        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                                            <div class="font-bold text-white">Casos</div>
+                                            <div class="text-white/70 text-xs">De éxito</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Problema y Solución -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -800,13 +962,19 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-4xl sm:text-5xl font-bold text-slate-800 mb-4">
-                    Soluciones Tecnológicas de Clase Corporativa
+                    Nuestros Servicios Principales
                 </h2>
-                <p class="text-xl text-slate-600">
-                    Trasladamos la rigurosidad de entornos financieros y corporativos exigentes a su organización. Automatización inteligente, desarrollo de software robusto e ingeniería de datos que generan resultados medibles en Quito, Guayaquil, Cuenca y todo Ecuador.
+                <p class="text-xl text-slate-600 mb-4">
+                    Trasladamos la rigurosidad de entornos financieros y corporativos exigentes a su organización. Automatización inteligente, desarrollo de software robusto e ingeniería de datos que generan resultados medibles.
                 </p>
+                <a href="catalogo.html" target="_blank" class="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold text-lg transition-all hover:gap-3">
+                    Ver información técnica detallada en el catálogo
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 
                 <!-- Servicio 1 -->
                 <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 card-hover">
@@ -889,278 +1057,34 @@
                     </ul>
                 </div>
 
-                <!-- Servicio 4 -->
-                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 card-hover">
-                    <div class="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Integración de Sistemas</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">
-                        Conectamos su software de gestión principal con herramientas externas (facturación electrónica, aplicaciones móviles, portales web). La información fluye automáticamente entre plataformas, eliminando duplicación de esfuerzos y garantizando consistencia de datos.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            APIs RESTful y webhooks
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Sincronización en tiempo real
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Transacciones seguras
-                        </li>
-                    </ul>
                 </div>
 
-                <!-- Servicio 5 -->
-                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 card-hover">
-                    <div class="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Consultoría Tecnológica</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">
-                        Diagnóstico técnico bajo NDA, arquitectura tecnológica personalizada y acompañamiento estratégico. No vendemos "cajas", diseñamos la solución que su organización realmente necesita con metodología ágil y QA exhaustivo.
+            <!-- CTA Ver Todos los Servicios -->
+            <div class="text-center mt-12 max-w-3xl mx-auto">
+                <div class="bg-gradient-to-r from-slate-50 to-orange-50 rounded-2xl p-8 border-2 border-orange-200">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">
+                        ¿Necesita más información técnica?
+                    </h3>
+                    <p class="text-slate-600 mb-6">
+                        Explore nuestro catálogo digital para ver información detallada sobre <strong>Integración de Sistemas, Consultoría Tecnológica, Infraestructura, Metodología</strong> y más.
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Diagnóstico confidencial (NDA)
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Roadmap tecnológico
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Implementación supervisada
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Servicio 6 -->
-                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 card-hover">
-                    <div class="w-14 h-14 bg-gradient-to-br from-slate-400 to-slate-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                    <a href="catalogo.html" target="_blank" class="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Infraestructura Tecnológica</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">
-                        Suministro de servidores, storage, networking de marcas líderes (Dell, HPE, Cisco) y licenciamiento Microsoft original. Fortalecemos su base tecnológica con hardware robusto y software regularizado.
+                        Ver Catálogo Digital Completo
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                    <p class="text-sm text-slate-500 mt-4">
+                        ✓ 8 páginas interactivas &nbsp;|&nbsp; ✓ Casos de éxito &nbsp;|&nbsp; ✓ Tecnologías utilizadas
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Servidores Dell / HPE
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Licencias Microsoft originales
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Garantía y soporte técnico
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Proceso de Trabajo -->
-    <section id="proceso" class="py-20 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl sm:text-5xl font-bold text-slate-800 mb-4">
-                    Nuestro Proceso de Implementación
-                </h2>
-                <p class="text-xl text-slate-600">
-                    Una metodología probada que garantiza resultados desde el día uno
-                </p>
-            </div>
-            <div class="max-w-5xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <!-- Paso 1 -->
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg">1</div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">Análisis y Diagnóstico</h3>
-                            <p class="text-slate-600">Realizamos un estudio profundo de tus procesos actuales, identificando oportunidades de automatización y priorizando por impacto y viabilidad.</p>
-                        </div>
-                    </div>
-
-                    <!-- Paso 2 -->
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg">2</div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">Diseño de Solución</h3>
-                            <p class="text-slate-600">Creamos un blueprint detallado de la solución de automatización, incluyendo arquitectura técnica, flujos de trabajo y plan de implementación.</p>
-                        </div>
-                    </div>
-
-                    <!-- Paso 3 -->
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg">3</div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">Desarrollo e Integración</h3>
-                            <p class="text-slate-600">Construimos la solución usando las mejores prácticas y tecnologías, asegurando integración perfecta con tus sistemas existentes.</p>
-                        </div>
-                    </div>
-
-                    <!-- Paso 4 -->
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg">4</div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">Testing y Optimización</h3>
-                            <p class="text-slate-600">Realizamos pruebas exhaustivas en ambientes controlados, ajustando y optimizando cada detalle antes del lanzamiento.</p>
-                        </div>
-                    </div>
-
-                    <!-- Paso 5 -->
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg">5</div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">Despliegue y Capacitación</h3>
-                            <p class="text-slate-600">Implementamos la solución en producción y capacitamos a tu equipo para que puedan aprovechar al máximo la automatización.</p>
-                        </div>
-                    </div>
-
-                    <!-- Paso 6 -->
-                    <div class="flex gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg">6</div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">Soporte y Mejora Continua</h3>
-                            <p class="text-slate-600">Brindamos soporte técnico continuo y realizamos mejoras iterativas basadas en feedback y nuevas necesidades del negocio.</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Catálogo Digital -->
-    <section class="py-20 bg-gradient-to-br from-slate-800 to-slate-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-5xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    
-                    <!-- Imagen / Visual -->
-                    <div class="order-2 lg:order-1">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl blur-2xl opacity-20"></div>
-                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80" 
-                                 alt="Catálogo digital servicios tecnológicos Grupo Turing Ecuador automatización RPA" 
-                                 class="relative rounded-2xl shadow-2xl border-4 border-orange-500/20" 
-                                 loading="lazy" 
-                                 width="800" 
-                                 height="600">
-                            <div class="absolute -bottom-6 -right-6 bg-orange-500 text-white px-6 py-4 rounded-xl shadow-xl">
-                                <div class="text-3xl font-bold">8</div>
-                                <div class="text-sm">Páginas</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contenido -->
-                    <div class="order-1 lg:order-2 text-white">
-                        <div class="inline-block bg-orange-500/20 text-orange-400 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-orange-500/30">
-                            📖 Nuevo
-                        </div>
-                        <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-                            Descarga Nuestro <span class="text-orange-500">Catálogo Digital</span>
-                        </h2>
-                        <p class="text-xl text-slate-300 mb-8 leading-relaxed">
-                            Explora nuestra oferta completa de servicios en formato interactivo. Conoce en detalle cómo la automatización, desarrollo de software e ingeniería de datos pueden transformar tu empresa.
-                        </p>
-                        
-                        <!-- Lista de beneficios -->
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-lg mb-1">Información Detallada</h3>
-                                    <p class="text-slate-400">Servicios completos con casos de uso y metodología</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-lg mb-1">Formato Interactivo</h3>
-                                    <p class="text-slate-400">Navega fácilmente entre páginas como un libro digital</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-lg mb-1">Compártelo Fácilmente</h3>
-                                    <p class="text-slate-400">Envía el enlace por WhatsApp, email o redes sociales</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Botones -->
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="catalogo.html" 
-                               target="_blank"
-                               class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center inline-flex items-center justify-center gap-2">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                                </svg>
-                                Ver Catálogo Digital
-                            </a>
-                            <a href="https://wa.me/593990686162?text=Hola,%20me%20gustaría%20recibir%20el%20catálogo%20digital%20de%20Grupo%20Turing" 
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="border-2 border-orange-500 hover:bg-orange-500 text-orange-400 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 text-center inline-flex items-center justify-center gap-2">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                                Compartir por WhatsApp
-                            </a>
-                        </div>
-
-                        <p class="text-sm text-slate-400 mt-6">
-                            ✓ Acceso inmediato &nbsp;&nbsp;|&nbsp;&nbsp; ✓ Sin registro &nbsp;&nbsp;|&nbsp;&nbsp; ✓ 100% Gratis
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Por Qué Elegirnos / Sobre Nosotros -->
     <section id="nosotros" class="py-20 bg-slate-800 text-white">
@@ -1256,11 +1180,17 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-4xl sm:text-5xl font-bold text-slate-800 mb-4">
-                    Preguntas Frecuentes sobre Automatización de Procesos
+                    Preguntas Frecuentes
                 </h2>
-                <p class="text-xl text-slate-600">
-                    Resolvemos tus dudas sobre automatización empresarial, RPA y transformación digital en Ecuador
+                <p class="text-xl text-slate-600 mb-4">
+                    Resuelva sus dudas principales sobre nuestros servicios
                 </p>
+                <a href="catalogo.html" target="_blank" class="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold transition-all hover:gap-3">
+                    Ver metodología completa y casos de éxito en el catálogo
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
             </div>
             <div class="max-w-4xl mx-auto space-y-4" id="faqAccordion">
                 
@@ -1315,57 +1245,21 @@
                     </div>
                 </div>
 
-                <!-- FAQ 4 -->
-                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <h3 class="text-xl font-bold text-slate-800">
-                            ¿En qué ciudades de Ecuador operan?
-                        </h3>
-                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p class="text-slate-600 leading-relaxed">
-                            Grupo Turing opera en todo Ecuador, con servicios en Quito, Guayaquil, Cuenca y todas las ciudades del país. Ofrecemos consultoría presencial en Quito y consultoría remota para el resto del país en automatización de procesos, RPA, ingeniería de datos y transformación digital.
-                        </p>
-                    </div>
-                </div>
+            </div>
 
-                <!-- FAQ 5 -->
-                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <h3 class="text-xl font-bold text-slate-800">
-                            ¿Cuánto tiempo toma implementar automatización de procesos?
-                        </h3>
-                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            <!-- CTA Más Preguntas -->
+            <div class="text-center mt-12 max-w-2xl mx-auto">
+                <div class="bg-slate-50 rounded-xl p-6 border-2 border-slate-200">
+                    <p class="text-slate-600 mb-4">
+                        <strong>¿Tiene más preguntas?</strong> Explore el catálogo digital para ver nuestra metodología completa, casos de éxito y experiencia detallada.
+                    </p>
+                    <a href="catalogo.html" target="_blank" class="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold text-lg transition-all hover:gap-3">
+                        Ver Catálogo Digital
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p class="text-slate-600 leading-relaxed">
-                            La implementación varía de 2 semanas a 3 meses según la complejidad. Procesos simples de RPA pueden estar operativos en 2-4 semanas. Soluciones complejas de integración de sistemas pueden tomar 2-3 meses. En Grupo Turing usamos metodologías ágiles para resultados rápidos.
-                        </p>
-                    </div>
+                    </a>
                 </div>
-
-                <!-- FAQ 6 -->
-                <div class="faq-item bg-gray-50 rounded-xl p-6 border border-slate-200">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <h3 class="text-xl font-bold text-slate-800">
-                            ¿Qué empresas pueden beneficiarse de la automatización?
-                        </h3>
-                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p class="text-slate-600 leading-relaxed">
-                            Cualquier empresa con tareas repetitivas puede beneficiarse: retail, finanzas, manufactura, logística, servicios, salud, etc. Si tu equipo dedica tiempo a entrada de datos, generación de reportes, conciliaciones o procesos manuales, la automatización puede ayudarte. Grupo Turing tiene experiencia en múltiples industrias en Ecuador.
-                        </p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -1750,6 +1644,38 @@
         //         firstFaq.classList.add('active');
         //     }
         // });
+
+        // Banner Catálogo Flotante
+        let catalogBannerShown = false;
+        let catalogBannerClosed = false;
+        
+        window.addEventListener('scroll', function() {
+            if (!catalogBannerShown && !catalogBannerClosed) {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                
+                // Mostrar después de scrollear 1.5 pantallas
+                if (scrollPosition > windowHeight * 1.5) {
+                    const banner = document.getElementById('catalogBanner');
+                    if (banner) {
+                        banner.style.display = 'block';
+                        catalogBannerShown = true;
+                    }
+                }
+            }
+        });
+        
+        function closeCatalogBanner() {
+            const banner = document.getElementById('catalogBanner');
+            if (banner) {
+                banner.style.opacity = '0';
+                banner.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 300);
+                catalogBannerClosed = true;
+            }
+        }
     </script>
 
 </body>
