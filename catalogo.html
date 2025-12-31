@@ -596,6 +596,25 @@
             line-height: 1.6;
         }
 
+        /* Logo hover effects */
+        .logo-hover {
+            cursor: pointer;
+        }
+
+        .logo-hover:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .logo-hover img {
+            transition: all 0.3s ease;
+            filter: grayscale(20%);
+        }
+
+        .logo-hover:hover img {
+            filter: grayscale(0%);
+        }
+
         /* Navegación */
         .navigation {
             position: fixed;
@@ -768,6 +787,12 @@
                 max-width: 180px;
             }
 
+            /* Página de experiencia responsive */
+            .page[data-page="8"] div[style*="grid-template-columns"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+            }
+
             .contraportada h2 {
                 font-size: 28px;
             }
@@ -869,6 +894,16 @@
                 padding: 16px 18px;
             }
 
+            /* Página de experiencia en móviles pequeños */
+            .page[data-page="8"] h3 {
+                font-size: 16px !important;
+            }
+
+            .page[data-page="8"] div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+            }
+
             .navigation {
                 padding: 12px 15px;
                 gap: 10px;
@@ -910,7 +945,7 @@
             Anterior
         </button>
         <span class="page-counter">
-            <span id="currentPage">1</span> / <span id="totalPages">8</span>
+            <span id="currentPage">1</span> / <span id="totalPages">9</span>
         </span>
         <button id="nextBtn" class="nav-btn">
             Siguiente
@@ -1173,8 +1208,83 @@
             </div>
         </div>
 
+        <!-- PÁGINA 8: EXPERIENCIA -->
+        <div class="page" data-page="8">
+            <h2 class="page-title">Nuestra Experiencia</h2>
+            <p class="page-subtitle">Respaldo comprobado en el mercado ecuatoriano</p>
+            
+            <div style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 25px; border-radius: 16px; margin-bottom: 30px; border-left: 5px solid #f97316;">
+                <h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    <svg style="width: 28px; height: 28px; color: #f97316;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    Empresas que Confían en Nosotros
+                </h3>
+                <p style="font-size: 14px; color: #475569; margin-bottom: 20px; line-height: 1.6;">
+                    Hemos implementado soluciones tecnológicas para empresas líderes en diversos sectores del Ecuador.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaEmpresa/Cooperativa_Santa_Rosa.png" alt="Cooperativa Santa Rosa" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaEmpresa/Mutualista_Ambato.png" alt="Mutualista Ambato" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaEmpresa/Gestcobra.png" alt="Gestcobra" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaEmpresa/MultigestionAmbato.png" alt="Multigestión Ambato" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaEmpresa/GV_Marmol.png" alt="GV Mármol" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 25px; border-radius: 16px; border-left: 5px solid #3b82f6;">
+                <h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    <svg style="width: 28px; height: 28px; color: #3b82f6;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    Experiencia de Nuestro Equipo
+                </h3>
+                <p style="font-size: 14px; color: #475569; margin-bottom: 20px; line-height: 1.6;">
+                    Nuestros colaboradores cuentan con trayectoria profesional en instituciones de prestigio nacional.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaColaboradores/Banco_Pichincha.png" alt="Banco Pichincha" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaColaboradores/Produbanco.png" alt="Produbanco" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaColaboradores/Banco_General_Rumiñahui.png" alt="Banco General Rumiñahui" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaColaboradores/Corposano.png" alt="Corposano" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 80px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" class="logo-hover">
+                        <img src="LogosEmpresas/ExperienciaColaboradores/Confiamed.png" alt="Confiamed" style="max-width: 100%; max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 20px 25px; border-radius: 12px; margin-top: 25px; text-align: center; border: 2px solid #f59e0b;">
+                <p style="font-size: 15px; font-weight: 700; color: #92400e; margin: 0; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    Solidez técnica que garantiza cada proyecto
+                </p>
+            </div>
+        </div>
+
         <!-- CONTRAPORTADA -->
-        <div class="page contraportada single-page" data-page="8">
+        <div class="page contraportada single-page" data-page="9">
             <h2>El Futuro de su Empresa<br>Comienza con una Decisión Inteligente</h2>
             
             <p>No permita que los procesos manuales o la infraestructura obsoleta frenen su crecimiento. Permita que Grupo Turing optimice su operación hoy mismo.</p>
