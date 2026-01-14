@@ -751,7 +751,7 @@
     </div>
     
     <!-- Hidden iframe for Google Forms submission -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleFormSubmitted()"></iframe>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     
     <!-- Success Modal -->
     <div id="successModal" class="success-modal">
@@ -1664,21 +1664,30 @@
         
         function handleGoogleFormSubmit() {
             formSubmitted = true;
+            console.log('✅ Formulario enviándose a Google Forms...'); // Debug
+            
+            // Mostrar modal después de un breve delay para mejor UX
+            setTimeout(() => {
+                showSuccessModal();
+                document.getElementById('contactForm').reset();
+                console.log('✅ Formulario enviado exitosamente'); // Debug
+            }, 1000);
+            
             return true; // Allow form submission to proceed
         }
         
-        function handleFormSubmitted() {
-            if (formSubmitted) {
-                // Show success modal
-                showSuccessModal();
-                
-                // Reset form
-                document.getElementById('contactForm').reset();
-                
-                // Reset flag
-                formSubmitted = false;
+        // Configurar el evento onload del iframe después de que el DOM esté listo
+        window.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.getElementById('hidden_iframe');
+            if (iframe) {
+                iframe.onload = function() {
+                    if (formSubmitted) {
+                        console.log('✅ Confirmación de Google Forms recibida');
+                        formSubmitted = false;
+                    }
+                };
             }
-        }
+        });
 
         // Intersection Observer for fade-in animations
         const observerOptions = {
