@@ -80,12 +80,17 @@ git push -u origin main
 4. Click en "Publish repository"
 5. Activa GitHub Pages desde la web (Settings → Pages)
 
-## 🌐 Configurar Dominio Propio (grupoturing.com)
+## 🌐 Configurar Dominio Propio (turingtech.com.ec)
+
+### ✅ Archivo CNAME ya incluido
+
+El archivo `CNAME` ya está configurado con `www.turingtech.com.ec`
 
 ### Pasos para conectar dominio personalizado:
 
-1. **En tu proveedor de dominio** (GoDaddy, Namecheap, etc.):
-   - Agregar registros DNS:
+1. **En tu proveedor de dominio ecuatoriano** (.ec):
+   
+   **Opción A - Registros A (Recomendado para dominio raíz)**:
    ```
    Tipo: A
    Host: @
@@ -107,21 +112,39 @@ git push -u origin main
    Host: www
    Valor: TU-USUARIO.github.io
    ```
+   
+   **Opción B - Solo CNAME (Más simple)**:
+   ```
+   Tipo: CNAME
+   Host: www
+   Valor: TU-USUARIO.github.io
+   ```
 
 2. **En GitHub Pages (Settings → Pages)**:
-   - Custom domain: `grupoturing.com`
-   - Esperar verificación DNS (puede tomar hasta 24 horas)
-   - Activar "Enforce HTTPS"
+   - Custom domain: `www.turingtech.com.ec`
+   - Esperar verificación DNS (puede tomar 24-48 horas)
+   - Activar "Enforce HTTPS" (importante para SEO)
 
-3. **Crear archivo CNAME en el repositorio**:
-   - El archivo ya está incluido si sigues las instrucciones
+3. **Verificar configuración**:
+   - Esperar propagación DNS (24-48 horas)
+   - Verificar en https://dnschecker.org
+   - Confirmar que el sitio carga con HTTPS
+
+### 🇪🇨 Ventajas del Dominio .ec para SEO
+
+✅ **Posicionamiento Local**: Google prioriza dominios .ec en búsquedas desde Ecuador
+✅ **Confianza**: Mayor credibilidad para usuarios ecuatorianos
+✅ **Menos Competencia**: Menos sitios .ec compitiendo por keywords
+✅ **Identidad Nacional**: Refuerza presencia como empresa ecuatoriana
+
+Ver archivo `SEO-ECUADOR-ESTRATEGIA.md` para estrategia completa de posicionamiento.
 
 ## ⚙️ Configuración Inicial IMPORTANTE
 
 ### Antes de publicar, actualiza estos datos:
 
 1. **En `index.html`**:
-   - [ ] Líneas 15-20: Cambiar `grupoturing.com` por tu URL de GitHub Pages
+   - [x] Líneas 15-20: Dominio actualizado a `turingtech.com.ec`
    - [ ] Línea 27-28: URL de imágenes para Open Graph
    - [ ] Búsqueda global: Reemplazar `+593 (2) 1234-5678` por teléfono real
 
