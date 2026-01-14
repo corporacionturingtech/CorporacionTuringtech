@@ -283,5 +283,5 @@ Si tienes dudas sobre el código o necesitas ayuda:
 
 **Última actualización:** 14 de Diciembre, 2024  
 **Versión:** 1.0  
-**Estado:** ✅ Listo para producción
+**Estado:** ✅ Listo para producción 
 
