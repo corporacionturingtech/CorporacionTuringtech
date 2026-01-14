@@ -1,4 +1,4 @@
-# .htaccess para Grupo Turing - Optimización SEO y Rendimiento
+# .htaccess para TURINGTECH - Optimización SEO y Rendimiento
 
 # Habilitar compresión GZIP
 <IfModule mod_deflate.c>

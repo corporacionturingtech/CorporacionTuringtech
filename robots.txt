@@ -1,4 +1,4 @@
-# robots.txt para Grupo Turing
+# robots.txt para TURINGTECH
 # https://grupoturing.com/robots.txt
 
 # Permitir a todos los bots rastrear el sitio

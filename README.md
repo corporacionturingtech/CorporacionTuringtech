@@ -1,6 +1,6 @@
-# 🚀 Grupo Turing - Landing Page Empresarial
+# 🚀 TURINGTECH - Landing Page Empresarial
 
-Landing page profesional para Grupo Turing, empresa especializada en automatización de procesos empresariales, RPA e ingeniería de datos en Ecuador.
+Landing page profesional para TURINGTECH, empresa especializada en automatización de procesos empresariales, RPA e ingeniería de datos en Ecuador.
 
 ## 🌟 Características
 
@@ -42,7 +42,7 @@ GrupoTuring/
 2. **Subir archivos**
    - Click en "uploading an existing file"
    - Arrastra todos los archivos del proyecto
-   - Commit: "Initial commit - Grupo Turing Landing Page"
+   - Commit: "Initial commit - TURINGTECH Landing Page"
    - Click en "Commit changes"
 
 3. **Activar GitHub Pages**
@@ -62,7 +62,7 @@ GrupoTuring/
 # 1. Inicializar repositorio
 git init
 git add .
-git commit -m "Initial commit - Grupo Turing Landing Page"
+git commit -m "Initial commit - TURINGTECH Landing Page"
 
 # 2. Crear repositorio en GitHub y conectar
 git remote add origin https://github.com/TU-USUARIO/grupoturing-landing.git
@@ -241,7 +241,7 @@ Si tienes dudas sobre el código o necesitas ayuda:
 
 ## 📄 Licencia
 
-© 2024 Grupo Turing. Todos los derechos reservados.
+© 2024 TURINGTECH. Todos los derechos reservados.
 
 ## 🚀 Próximos Pasos Recomendados
 

@@ -18,7 +18,7 @@ git init
 git add .
 
 # 4. Hacer commit inicial
-git commit -m "Initial commit - Grupo Turing Landing Page Ecuador"
+git commit -m "Initial commit - TURINGTECH Landing Page Ecuador"
 
 # 5. Conectar con GitHub (reemplaza TU-USUARIO)
 git remote add origin https://github.com/TU-USUARIO/grupoturing-landing.git
@@ -82,7 +82,7 @@ CREAR REPOSITORIO EN GITHUB (Antes del paso 5)
 
 1. Ve a: https://github.com/new
 2. Repository name: grupoturing-landing
-3. Description: Landing page oficial de Grupo Turing Ecuador
+3. Description: Landing page oficial de TURINGTECH Ecuador
 4. Public (importante para GitHub Pages gratis)
 5. NO marcar "Add a README file"
 6. Click "Create repository"
