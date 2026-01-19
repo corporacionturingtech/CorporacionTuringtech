@@ -14,7 +14,7 @@
    - ✅ Canonical URL
    - ✅ Schema.org structured data
    - ✅ Breadcrumb navigation
-   - ✅ Email de contacto: `contacto@turingtech.com.ec`
+   - ✅ Email de contacto: `gerencia@turingtech.com.ec`
    - ✅ Referencias en JavaScript
 
 2. **catalogo.html**
